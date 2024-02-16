@@ -1,0 +1,6 @@
+.github
+.vscode
+.parcel-cache
+/tests
+/example
+calindra-cartesify-backend-*.tgz

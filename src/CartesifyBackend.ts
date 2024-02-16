@@ -4,6 +4,8 @@ import { Hex } from "viem";
 import { FetchCommand } from "./FetchCommand";
 import { createDapp } from "./DerollFactory";
 
+const DEV_MODE = process.env.DEV_MODE === "true"
+
 export interface CartesifyOptions {
     url: string;
     broadcastAdvanceRequests?: boolean;
@@ -33,7 +35,7 @@ export default class CartesifyBackend {
                         console.timeEnd(`Delay ${json.cartesify.delay}s`)
                         return "accept"
                     }
-                    if (json.cartesify.file) {
+                    if (DEV_MODE && json.cartesify.file) {
                         await writeFile(json.cartesify.file, json.cartesify.content)
                         console.log(`File ${json.cartesify.file}`)
                         console.log(`Sending accept`)

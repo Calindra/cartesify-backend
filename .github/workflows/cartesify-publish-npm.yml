@@ -1,0 +1,35 @@
+name: NPM Publish Cartesify Backend
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract tag name
+        id: extract_tag
+        run: echo "::set-output name=tag::$(echo ${GITHUB_REF#refs/tags/})"
+
+      - name: Update package.json
+        run: |
+          TAG="${{ steps.extract_tag.outputs.tag }}"
+          TAG_NO_V=$(echo "$TAG" | sed 's/^v//')
+          sed -i "s/\"version\": \".*\"/\"version\": \"$TAG_NO_V\"/" package.json
+          echo "Updated version to $TAG_NO_V in package.json"
+
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          registry-url: "https://registry.npmjs.org"
+          cache: "npm"
+      - name: Run publish
+        run: |
+          npm ci
+          npm run build
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

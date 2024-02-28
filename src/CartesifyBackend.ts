@@ -20,6 +20,9 @@ export default class CartesifyBackend {
         // handle input encoded as hex
         app.addAdvanceHandler(async ({ payload, metadata }) => {
             try {
+                if (!/^0x7b22/.test(payload)) {
+                    return "reject"
+                }
                 const hexString = payload.replace(/^0x/, '');
                 const buffer = Buffer.from(hexString, "hex");
 

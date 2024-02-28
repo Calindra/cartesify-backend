@@ -4,3 +4,4 @@
 /tests
 /example
 calindra-cartesify-backend-*.tgz
+/build-local.sh

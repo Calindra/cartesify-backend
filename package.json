@@ -1,6 +1,6 @@
 {
   "name": "@calindra/cartesify-backend",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "TypeScript DApp",
   "source": "src/index.ts",
   "main": "src/index.js",
@@ -22,7 +22,6 @@
     "typescript": "^5"
   },
   "scripts": {
-    "build:old": "run-s codegen compile",
     "build": "parcel build",
     "build:clean": "rm -rf .parcel-cache && rm src/index.js src/index.js.map calindra-cartesify-*.tgz",
     "codegen": "ts-node schema.ts",

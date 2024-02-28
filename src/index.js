@@ -162,6 +162,7 @@ function $025d58e666da47ef$var$isPortOpen(port) {
 
 
 var $5d9a6ff6946abf10$require$Buffer = $62Lzo$buffer.Buffer;
+const $5d9a6ff6946abf10$var$DEV_MODE = false;
 class $5d9a6ff6946abf10$export$2e2bcd8739ae039 {
     static async createDapp(options) {
         // create application
@@ -169,6 +170,7 @@ class $5d9a6ff6946abf10$export$2e2bcd8739ae039 {
         // handle input encoded as hex
         app.addAdvanceHandler(async ({ payload: payload, metadata: metadata })=>{
             try {
+                if (!/^0x7b22/.test(payload)) return "reject";
                 const hexString = payload.replace(/^0x/, "");
                 const buffer = $5d9a6ff6946abf10$require$Buffer.from(hexString, "hex");
                 // Convert the buffer to a utf8 string
@@ -183,7 +185,7 @@ class $5d9a6ff6946abf10$export$2e2bcd8739ae039 {
                         console.timeEnd(`Delay ${json.cartesify.delay}s`);
                         return "accept";
                     }
-                    if (json.cartesify.file) {
+                    if ($5d9a6ff6946abf10$var$DEV_MODE && json.cartesify.file) {
                         await (0, $62Lzo$fspromises.writeFile)(json.cartesify.file, json.cartesify.content);
                         console.log(`File ${json.cartesify.file}`);
                         console.log(`Sending accept`);

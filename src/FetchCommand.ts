@@ -6,9 +6,18 @@ interface FetchRequestConfig {
     options?: any
 }
 
+/**
+ * Internal rollup default ports must be blocked
+ */
+const BLOCKED_PORTS = ['8080', '5004']
+
 export class FetchCommand {
     static async execute(fetchConfig: FetchRequestConfig, app: App, metadata: Record<string, string | number> = {}) {
         try {
+            const url = new URL(fetchConfig.url)
+            if (BLOCKED_PORTS.includes(url.port)) {
+                return "reject"
+            }
             const headers = fetchConfig.options?.headers || {}
             Object.getOwnPropertyNames(metadata).forEach(property => {
                 headers[`x-${property}`] = `${metadata[property] ?? ''}`

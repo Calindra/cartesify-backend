@@ -1,11 +1,15 @@
 console.log('starting app.js...')
 const { CartesifyBackend } = require("@calindra/cartesify-backend")
 
-CartesifyBackend.createDapp().then(dapp => {
-    dapp.start().catch((e) => {
+let dapp
+CartesifyBackend.createDapp().then(initDapp => {
+    initDapp.start().then(() => {
+        console.log('Dapp initialized')
+    }).catch((e) => {
         console.error(e);
         process.exit(1);
     });
+    dapp = initDapp
 })
 
 const express = require("express")

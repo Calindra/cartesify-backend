@@ -15,11 +15,11 @@ export async function createDapp(options?: CartesifyOptions) {
         return createApp({ url: ROLLUP_HTTP_SERVER_URL, broadcastAdvanceRequests: options?.broadcastAdvanceRequests });
     }
     // try to detect
-    if (await isPortOpen(+NONODO_HTTP_SERVER_URL.port)) {
-        return createApp({ url: NONODO_HTTP_SERVER_URL.toString(), broadcastAdvanceRequests: options?.broadcastAdvanceRequests });
-    }
     if (await isPortOpen(+DEFAULT_ROLLUP_HTTP_SERVER_URL.port)) {
         return createApp({ url: DEFAULT_ROLLUP_HTTP_SERVER_URL.toString(), broadcastAdvanceRequests: options?.broadcastAdvanceRequests });
+    }
+    if (await isPortOpen(+NONODO_HTTP_SERVER_URL.port)) {
+        return createApp({ url: NONODO_HTTP_SERVER_URL.toString(), broadcastAdvanceRequests: options?.broadcastAdvanceRequests });
     }
     throw new Error('Unable to detect the Rollup Http Server')
 }

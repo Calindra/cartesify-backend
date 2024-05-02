@@ -1,11 +1,11 @@
 {
   "name": "@calindra/cartesify-backend",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "TypeScript DApp",
   "source": "src/index.ts",
   "main": "src/index.js",
   "dependencies": {
-    "@deroll/app": "^0.4.0",
+    "@deroll/app": "^0.6.0",
     "axios": "^1.6.5",
     "viem": "^1"
   },

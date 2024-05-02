@@ -1,6 +1,6 @@
 import { describe, it, expect } from "@jest/globals";
 import { FetchCommand } from "../src/FetchCommand";
-import { App } from "@deroll/app";
+import { App } from "@deroll/core";
 
 
 describe("FetchCommand", () => {

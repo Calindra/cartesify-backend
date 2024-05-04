@@ -1,4 +1,4 @@
-import { App } from "@deroll/app";
+import { App } from "@deroll/core";
 import { Hex } from "viem";
 
 interface FetchRequestConfig {

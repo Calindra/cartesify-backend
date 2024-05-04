@@ -1,4 +1,4 @@
-import { App } from "@deroll/app";
+import { App } from "@deroll/core";
 import axios, { AxiosRequestConfig } from "axios";
 import { Hex } from "viem";
 

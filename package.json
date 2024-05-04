@@ -6,6 +6,7 @@
   "main": "src/index.js",
   "dependencies": {
     "@deroll/app": "^0.6.0",
+    "@deroll/core": "^0.1.0",
     "axios": "^1.6.5",
     "viem": "^1"
   },

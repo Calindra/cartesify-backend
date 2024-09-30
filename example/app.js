@@ -27,6 +27,10 @@ app.get("/health", (req, res) => {
     res.send({ some: "response" });
 });
 
+app.get("/params", (req, res) => {
+    res.send(req.query);
+});
+
 app.post("/new-game", async (req, res) => {
     let player1 = req.header("x-msg_sender")
     let commit1 = req.body.commit // = hash(move + nonce)
@@ -91,6 +95,14 @@ app.post('/echo/headers', (req, res) => {
 
 app.get('/echo/headers', (req, res) => {
     res.send({ headers: req.headers });
+})
+
+app.get('/old-path', (req, res) => {
+    res.redirect(301, '/new-path');
+})
+
+app.get('/new-path', (req, res) => {
+    res.send({ message: 'You have been redirected to the new path.', path: req.url });
 })
 
 app.listen(port, () => {

@@ -97,6 +97,14 @@ app.get('/echo/headers', (req, res) => {
     res.send({ headers: req.headers });
 })
 
+app.get('/old-path', (req, res) => {
+    res.redirect(301, '/new-path');
+})
+
+app.get('/new-path', (req, res) => {
+    res.send({ message: 'You have been redirected to the new path.', path: req.url });
+})
+
 app.listen(port, () => {
     console.log(`[server]: Server is running at http://localhost:${port}`);
 });

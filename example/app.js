@@ -27,6 +27,10 @@ app.get("/health", (req, res) => {
     res.send({ some: "response" });
 });
 
+app.get("/params", (req, res) => {
+    res.send(req.query);
+});
+
 app.post("/new-game", async (req, res) => {
     let player1 = req.header("x-msg_sender")
     let commit1 = req.body.commit // = hash(move + nonce)

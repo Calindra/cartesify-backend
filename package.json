@@ -1,6 +1,6 @@
 {
   "name": "@calindra/cartesify-backend",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "TypeScript DApp",
   "source": "src/index.ts",
   "main": "src/index.js",

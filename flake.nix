@@ -1,5 +1,5 @@
 {
-  description = "Node.js development environment with PNPM";
+  description = "Node.js development environment";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -17,13 +17,11 @@
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             nodejs_22
-            pnpm
           ];
 
           shellHook = ''
-            echo "Node.js and PNPM development environment"
+            echo "Node.js development environment"
             node --version
-            pnpm --version
           '';
         };
       }
